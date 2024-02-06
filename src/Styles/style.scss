@@ -1,1 +1,43 @@
 @use 'reset';
+//Font Style
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+//Variables
+$body-bg-color: hsl(185, 41%, 84%);
+
+@mixin Flex($direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    @include Flex(column);
+    background-color: $body-bg-color;
+    background-image: url(../assets/logo.svg);
+    background-repeat: no-repeat;
+    background-position: top 15% center;
+
+    font-family: 'Space Mono', monospace;
+}
+
+.main {
+    max-width: 28rem;
+}
+
+.form-container {
+    background-color: white;
+    padding: 2em;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.tip-fieldset-Grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+
+    border: none;
+    margin: 0;
+}

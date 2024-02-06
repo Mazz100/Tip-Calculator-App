@@ -1,10 +1,12 @@
-import Card from "./Card.jsx"
+import TipCalculator from "./TipCalculator.jsx"
 
 function App() {
 
   return (
     <>
-      <Card />
+        <main className='main'>
+          <TipCalculator />
+        </main>
     </>
   )
 }

@@ -1,7 +1,11 @@
 
 
-function Result(){
+function Result() {
+    return (
+        <>
 
+        </>
+    );
 }
 
 export default Result
