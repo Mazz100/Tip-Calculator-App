@@ -4,6 +4,9 @@
 
 //Variables
 $body-bg-color: hsl(185, 41%, 84%);
+$radio-bg-color: hsl(183, 100%, 15%);
+$input-bg-color: hsl(202, 50%, 97%);
+$radio-selected-bg-color: hsl(175, 61%, 38%);
 
 @mixin Flex($direction) {
     display: flex;
@@ -15,29 +18,118 @@ $body-bg-color: hsl(185, 41%, 84%);
 body {
     @include Flex(column);
     background-color: $body-bg-color;
-    background-image: url(../assets/logo.svg);
-    background-repeat: no-repeat;
-    background-position: top 15% center;
+
 
     font-family: 'Space Mono', monospace;
 }
 
 .main {
-    max-width: 28rem;
+    max-width: 23rem;
+}
+
+.logo {
+    @include Flex(column);
 }
 
 .form-container {
     background-color: white;
-    padding: 2em;
+    padding: 1.5em;
+    margin-top: 1.5em;
     border-top-right-radius: 12px;
     border-top-left-radius: 12px;
 }
 
-.tip-fieldset-Grid{
+.bill-container {
+    @include Flex(column);
+    align-items: start;
+
+    label {
+        margin-bottom: 0.2em;
+        opacity: 0.7;
+    }
+
+    .bill-input {
+        display: block;
+        width: 100%;
+        padding: 0.4em;
+        border-radius: 6px;
+        border: none;
+        background-color: $input-bg-color;
+    }
+}
+
+.people-container {
+    @include Flex(column);
+    align-items: start;
+
+    label {
+        margin-bottom: 0.2em;
+        opacity: 0.7;
+    }
+
+    .people-input {
+        display: block;
+        width: 100%;
+        padding: 0.4em;
+        border-radius: 6px;
+        border: none;
+        background-color: $input-bg-color;
+    }
+}
+
+.tip-fieldset-Grid {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
 
     border: none;
     margin: 0;
+    padding: 0;
 }
+
+.input-wrapper {
+    position: relative;
+    padding: 0.5em;
+
+    .tip-label {
+        background-color: $radio-bg-color;
+        color: white;
+        font-size: 1.5em;
+        padding: 0.4em;
+        border-radius: 5px;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        transition: color 0.2s linear, background-color 0.1s linear;
+    }
+
+    .custom-input {
+        display: block;
+        width: 100%;
+        font-size: 1.5em;
+        text-align: center;
+        padding: 0.4em;
+        border-radius: 5px;
+        border: none;
+        background-color: $input-bg-color;
+    }
+
+}
+
+//visually hide input elements for custom styling
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+}
+
+//Sibling combinator between label and input
+input[type="radio"]:checked+.tip-label{
+    background-color: $radio-selected-bg-color;
+    color: black;
+}
+
