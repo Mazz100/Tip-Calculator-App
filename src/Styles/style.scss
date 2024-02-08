@@ -7,6 +7,12 @@ $body-bg-color: hsl(185, 41%, 84%);
 $radio-bg-color: hsl(183, 100%, 15%);
 $input-bg-color: hsl(202, 50%, 97%);
 $radio-selected-bg-color: hsl(175, 61%, 38%);
+$button-bg-color: hsl(172, 67%, 45%);
+$button-active-bg-color: hsl(173, 61%, 77%);
+$button-color: hsl(178, 100%, 16%);
+$value-color: hsl(172, 60%, 46%);
+$text-color: hsl(184, 7%, 45%);
+$input-value-color: hsl(177, 94%, 14%);
 
 @mixin Flex($direction) {
     display: flex;
@@ -17,26 +23,39 @@ $radio-selected-bg-color: hsl(175, 61%, 38%);
 
 body {
     @include Flex(column);
+    justify-content: end;
     background-color: $body-bg-color;
-
 
     font-family: 'Space Mono', monospace;
 }
 
 .main {
-    max-width: 23rem;
-}
+    max-width: 25rem;
 
-.logo {
-    @include Flex(column);
-}
-
-.form-container {
     background-color: white;
     padding: 1.5em;
     margin-top: 1.5em;
     border-top-right-radius: 12px;
     border-top-left-radius: 12px;
+}
+
+.logo {
+    @include Flex(column);
+
+}
+
+.form-container {
+    legend {
+        color: $text-color;
+    }
+
+    input[type="number"]::placeholder {
+        opacity: 0.5;
+    }
+
+    input[type="number"] {
+        color: $input-value-color;
+    }
 }
 
 .bill-container {
@@ -45,16 +64,22 @@ body {
 
     label {
         margin-bottom: 0.2em;
-        opacity: 0.7;
+        color: $text-color
     }
 
     .bill-input {
         display: block;
         width: 100%;
-        padding: 0.4em;
+        text-align: right;
+        font-size: 1.5rem;
+        padding: 0.2em;
+        margin-bottom: 1em;
         border-radius: 6px;
         border: none;
         background-color: $input-bg-color;
+        background-image: url(../assets/icon-dollar.svg);
+        background-repeat: no-repeat;
+        background-position: left 5% center;
     }
 }
 
@@ -64,16 +89,22 @@ body {
 
     label {
         margin-bottom: 0.2em;
-        opacity: 0.7;
+        color: $text-color;
     }
 
     .people-input {
         display: block;
         width: 100%;
-        padding: 0.4em;
+        text-align: right;
+        font-size: 1.5rem;
+        padding: 0.2em;
+        margin-bottom: 1em;
         border-radius: 6px;
         border: none;
         background-color: $input-bg-color;
+        background-image: url(../assets/icon-person.svg);
+        background-repeat: no-repeat;
+        background-position: left 5% center;
     }
 }
 
@@ -90,6 +121,7 @@ body {
 .input-wrapper {
     position: relative;
     padding: 0.5em;
+    margin-bottom: 1em;
 
     .tip-label {
         background-color: $radio-bg-color;
@@ -128,8 +160,76 @@ body {
 }
 
 //Sibling combinator between label and input
-input[type="radio"]:checked+.tip-label{
+input[type="radio"]:checked+.tip-label {
     background-color: $radio-selected-bg-color;
     color: black;
 }
 
+input[type="radio"]:hover+.tip-label,input[type="radio"]:focus-visible {
+    background-color: $button-active-bg-color;
+    color: black;
+}
+
+
+//Results styling
+.result-container {
+    background-color: $radio-bg-color;
+    padding: 2em 1.5em;
+    border-radius: 12px;
+
+    .tip-amount {
+        @include Flex(row);
+        justify-content: space-between;
+        color: white;
+        font-size: 0.875rem;
+        margin-bottom: 2em;
+    }
+
+    .total-people {
+        @include Flex(row);
+        justify-content: space-between;
+        color: white;
+        font-size: 0.875rem;
+    }
+
+    .person-span {
+        font-size: 0.815rem;
+        color: hsl(186, 21%, 50%);
+    }
+
+    .span-value {
+        color: $value-color;
+        font-size: 1.7rem;
+    }
+
+}
+
+.reset-button {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 6px;
+    margin-top: 1.5em;
+    padding: 0.4em;
+    background-color: $button-bg-color;
+    color: $button-color;
+    transition: color 0.2s linear, background-color 0.2s linear;
+}
+
+.reset-button:hover {
+    background-color: $button-active-bg-color;
+}
+
+//Footer
+.attribution {
+    display: none;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}

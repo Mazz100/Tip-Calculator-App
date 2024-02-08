@@ -7,12 +7,8 @@ function TipCalculator() {
 
     return (
         <>
-            <div className='logo'>
-                <img className='logo-image' src={logo} alt="" />
-            </div>
             <Input></Input>
             <Result></Result>
-            <Button></Button>
         </>
 
     );

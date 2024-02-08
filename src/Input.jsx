@@ -15,33 +15,33 @@ function Input() {
                     <fieldset className="tip-fieldset-Grid">
                         <legend>Select Tip % </legend>
                         <div className="input-wrapper">
-                            <label className="tip-label" htmlFor="5%">5%</label>
                             <input className="visually-hidden" type="radio" id="5%"
                                 name="tip-cut" value="" />
+                            <label className="tip-label" htmlFor="5%">5%</label>
                         </div>
-
+                        
                         <div className="input-wrapper">
-                            <label className="tip-label" htmlFor="10%">10%</label>
                             <input className="visually-hidden" type="radio" id="10%"
                                 name="tip-cut" value="" />
+                            <label className="tip-label" htmlFor="10%">10%</label>
                         </div>
 
                         <div className="input-wrapper">
-                            <label className="tip-label" htmlFor="15%">15%</label>
                             <input className="visually-hidden" type="radio" id="15%"
                                 name="tip-cut" value="" />
+                            <label className="tip-label" htmlFor="15%">15%</label>
                         </div>
 
                         <div className="input-wrapper">
-                            <label className="tip-label" htmlFor="25%">25%</label>
                             <input className="visually-hidden" type="radio" id="25%"
                                 name="tip-cut" value="" />
+                            <label className="tip-label" htmlFor="25%">25%</label>
                         </div>
 
                         <div className="input-wrapper">
-                            <label className="tip-label" htmlFor="50%">50%</label>
                             <input className="visually-hidden" type="radio" id="50%"
                                 name="tip-cut" value="" />
+                            <label className="tip-label" htmlFor="50%">50%</label>
                         </div>
 
                         <div className="input-wrapper">
