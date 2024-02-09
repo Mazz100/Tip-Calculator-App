@@ -184,6 +184,7 @@ body {
 .tip-fieldset-Grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  place-content: center;
   align-items: center;
   border: none;
   margin: 0;
@@ -211,7 +212,7 @@ body {
   width: 100%;
   font-size: 1.5em;
   text-align: center;
-  padding: 0.4em;
+  padding: 0.2em;
   border-radius: 5px;
   border: none;
   background-color: hsl(202, 50%, 97%);
@@ -233,7 +234,8 @@ input[type=radio]:checked + .tip-label {
   color: black;
 }
 
-input[type=radio]:hover + .tip-label, input[type=radio]:focus-visible {
+input[type=radio]:hover + .tip-label,
+input[type=radio]:focus-visible {
   background-color: hsl(173, 61%, 77%);
   color: black;
 }
@@ -242,6 +244,8 @@ input[type=radio]:hover + .tip-label, input[type=radio]:focus-visible {
   background-color: hsl(183, 100%, 15%);
   padding: 2em 1.5em;
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
 }
 .result-container .tip-amount {
   display: flex;
@@ -268,11 +272,10 @@ input[type=radio]:hover + .tip-label, input[type=radio]:focus-visible {
 }
 .result-container .span-value {
   color: hsl(172, 60%, 46%);
-  font-size: 1.7rem;
+  font-size: 2.5rem;
 }
 
 .reset-button {
-  display: block;
   width: 100%;
   cursor: pointer;
   font-size: 1.2rem;
@@ -298,4 +301,33 @@ input[type=radio]:hover + .tip-label, input[type=radio]:focus-visible {
 
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 50rem) {
+  body {
+    justify-content: center;
+  }
+  .main {
+    max-width: 54rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    place-content: center;
+    border-radius: 12px;
+  }
+  .bill-container,
+  .people-container {
+    margin-right: 2em;
+  }
+  .tip-fieldset-Grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-right: 2em;
+  }
+  .total-people {
+    margin-bottom: 5.5em;
+  }
+  .attribution {
+    display: block;
+  }
 }/*# sourceMappingURL=style.css.map */
