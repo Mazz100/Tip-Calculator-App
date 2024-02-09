@@ -6,6 +6,7 @@ function Input() {
         <>
             <div className="form-container">
                 <form>
+                    {/* Bill / people container are reused too. */}
                     <div className="bill-container">
                         <label htmlFor="bill">Bill</label>
                         <input className="bill-input" type="number" placeholder="0"
@@ -14,6 +15,9 @@ function Input() {
 
                     <fieldset className="tip-fieldset-Grid">
                         <legend>Select Tip % </legend>
+
+                        {/* 1. Should make a component for radio button */}
+                        {/* 2. Store the valid into an array so you can use .map() function */}
                         <div className="input-wrapper">
                             <input className="visually-hidden" type="radio" id="5%"
                                 name="tip-cut" value="" />

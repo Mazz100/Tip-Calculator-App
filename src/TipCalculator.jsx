@@ -6,7 +6,9 @@ import Button from './Button.jsx';
 function TipCalculator() {
 
     return (
-        <>
+        <>  
+            {/* You don't really need to divide as Input and Result. */}  
+            {/* Think of making component for reusable purpose */}
             <Input></Input>
             <Result></Result>
         </>
