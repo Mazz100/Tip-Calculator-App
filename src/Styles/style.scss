@@ -56,6 +56,12 @@ body {
     input[type="number"] {
         color: $input-value-color;
     }
+
+    //Removing number arrows control
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button{
+        appearance: none;
+    }
 }
 
 .bill-container {

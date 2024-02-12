@@ -4,10 +4,10 @@ import Result from './Result.jsx';
 import Button from './Button.jsx';
 
 function TipCalculator() {
-
+  
     return (
         <>
-            <Input></Input>
+            <Input/>
             <Result></Result>
         </>
 
