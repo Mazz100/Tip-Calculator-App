@@ -59,7 +59,7 @@ body {
 
     //Removing number arrows control
     input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button{
+    input[type="number"]::-webkit-outer-spin-button {
         appearance: none;
     }
 }
@@ -111,6 +111,16 @@ body {
         background-image: url(../assets/icon-person.svg);
         background-repeat: no-repeat;
         background-position: left 5% center;
+    }
+}
+
+.label-error-Flex-row {
+    @include Flex(row);
+    justify-content: space-between;
+    width: 100%;
+
+    p {
+        font-size: 0.875rem;
     }
 }
 

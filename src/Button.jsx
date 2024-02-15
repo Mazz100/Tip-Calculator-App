@@ -1,7 +1,10 @@
 
 
-function Button({ reset }) {
-  
+function Button({ reset, totalAmount }) {
+    const defaultButton = {
+        backgroundColor: 'hsl(178, 100%, 16%)',
+        color: 'black',
+    }
 
     return (
         <>

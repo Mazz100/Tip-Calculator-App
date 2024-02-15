@@ -2,10 +2,15 @@ import Button from "./Button.jsx";
 import propTypes from 'prop-types';
 import TipCalculator from "./TipCalculator.jsx";
 
-function Result({ tipAmount, totalAmount, updateTotal, updateTip }) {
+function Result({ tipAmount, totalAmount, updateTotal, updateTip,
+    resetBillValue, resetOptionValue, resetPeopleValue, resetCustomTip }) {
     const resetValues = () => {
         updateTip('0.00');
         updateTotal('0.00');
+        resetBillValue();
+        resetOptionValue();
+        resetPeopleValue();
+        resetCustomTip();
     }
 
     return (
@@ -33,8 +38,10 @@ function Result({ tipAmount, totalAmount, updateTotal, updateTip }) {
                     </div>
                 </div>
 
-                <Button reset={resetValues}></Button>
-            </div>
+                <Button reset={resetValues}
+                    resetBill={resetBillValue}
+                    totalAmount={totalAmount} />
+            </div >
         </>
     );
 }

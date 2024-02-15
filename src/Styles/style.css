@@ -186,6 +186,18 @@ body {
   background-position: left 5% center;
 }
 
+.label-error-Flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.label-error-Flex-row p {
+  font-size: 0.875rem;
+}
+
 .tip-fieldset-Grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

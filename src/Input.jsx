@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import propTypes from 'prop-types'
 
-function Input({ updateTip, updateTotal }) {
-    const [bill, setBill] = useState("");
-    const [people, setPeople] = useState("");
-    const [selectedTip, setSelectedTip] = useState("");
-    const [customTip, setCustomTip] = useState("");
-
+function Input({ updateTip, updateTotal, bill, handleBillValue,
+    resetBillValue, selectedTip, updateOptionValue, handlePeopleValue,
+    resetPeopleValue, people, handleCustomTip, resetCustomTip, customTip }) {
 
     //Create an array of objects for radio inputs
     const tips =
@@ -18,49 +15,14 @@ function Input({ updateTip, updateTotal }) {
         { id: "50%", value: 0.5 },]
 
 
-    function handleBillValue(event) {
-        setBill(event.target.value);
-
-    }
-
-    function handlePeopleValue(event) {
-        setPeople(event.target.value);
-    }
-
-    function handleCustomTip(event) {
-        setCustomTip(event.target.value);
-
-    }
-
-    useEffect(() => {
-        if (customTip.length > 3 || customTip < 0) {
-            setCustomTip('');
-        }
-
-        else if (bill.length > 10 || bill < 0) {
-            setBill('');
-        }
-
-        else if (people.length > 10 || people < 0) {
-            setPeople('');
-        }
-
-    }, [customTip, bill, people]);
-
-    function updateOptionValue(event) {
-        setSelectedTip(event.target.value);
-
-    }
-
     useEffect(() => {
         //Declaring let data to calculate the tip amount per person
         let addedTip = parseFloat(bill) * parseFloat(selectedTip);
         //Dividing the bill + tip by people numbers and gives total amount
         let totalCharge = (addedTip + parseFloat(bill)) / parseFloat(people);
 
-        if (selectedTip && bill && people) {
-            console.log(totalCharge);
-            updateTip(addedTip.toFixed(2) / people);
+        if (selectedTip && bill && people != 0) {
+            updateTip((addedTip / people).toFixed(2));
             updateTotal(totalCharge.toFixed(2));
         }
 
@@ -68,18 +30,28 @@ function Input({ updateTip, updateTotal }) {
         //converting the custom input to percentage
         let addedCustomTip = parseFloat(bill) * parseFloat(customTip) / 100;
         let totalCustomCharge = (addedCustomTip + parseFloat(bill)) / parseFloat(people);
-        if (bill && people && !selectedTip) {
-            console.log(totalCustomCharge);
-            updateTip(addedCustomTip.toFixed(2) / people);
+
+        if (bill && people != 0 && !selectedTip) {
+            updateTip((addedCustomTip / people).toFixed(2));
             updateTotal(totalCustomCharge.toFixed(2));
 
         }
 
-        return () => {
-            //Restore all values to default
+        //Blocking too many digits 
+        if (customTip.length > 3 || customTip < 0) {
+            resetCustomTip();
         }
 
-    }, [selectedTip, bill, people]);
+        else if (bill.length > 10 || bill < 0) {
+            resetBillValue();
+        }
+
+        else if (people.length > 4 || people < 0) {
+            resetPeopleValue();
+        }
+
+
+    }, [selectedTip, bill, people, customTip]);
 
 
     return (
@@ -106,6 +78,7 @@ function Input({ updateTip, updateTotal }) {
                                     name="tip-cut"
                                     value={tip.value}
                                     onChange={updateOptionValue}
+                                    checked={selectedTip == tip.value}
                                 />
                                 <label className="tip-label" htmlFor={tip.id}>{tip.id}</label>
                             </div>
@@ -119,14 +92,16 @@ function Input({ updateTip, updateTotal }) {
                                 name="tip-cut"
                                 value={customTip}
                                 onChange={handleCustomTip}
-                                size={3}
+
                             />
                         </div>
                     </fieldset>
 
                     <div className="people-container">
-                        <label htmlFor="people">Number of People</label>
-                        <p>{people == 0 ? `Can't be zero` : ''}</p>
+                        <div className="label-error-Flex-row">
+                            <label htmlFor="people">Number of People</label>
+                            <p>{people == 0 ? `Can't be zero` : ''}</p>
+                        </div>
                         <input className="people-input" onChange={handlePeopleValue}
                             type="number"
                             placeholder="0"
