@@ -1,9 +1,11 @@
 
 
-function Button() {
+function Button({ reset }) {
+  
+
     return (
         <>
-            <button className="reset-button">Reset</button>
+            <button className="reset-button" onClick={reset}>Reset</button>
         </>
     );
 }
