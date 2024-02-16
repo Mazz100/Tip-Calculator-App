@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import propTypes from 'prop-types'
+
 
 function Input({ updateTip, updateTotal, bill, handleBillValue,
     resetBillValue, selectedTip, updateOptionValue, handlePeopleValue,
@@ -7,13 +7,16 @@ function Input({ updateTip, updateTotal, bill, handleBillValue,
 
     //Create an array of objects for radio inputs
     const tips =
-        //Only id and value are uniue for each input
+        //Only id and value are unique for each input
         [{ id: "5%", value: 0.05 },
         { id: "10%", value: 0.10 },
         { id: "15%", value: 0.15 },
         { id: "25%", value: 0.25 },
         { id: "50%", value: 0.5 },]
 
+    const validateInput = {
+        border: 'solid 2px hsl(13, 74%, 56%)',
+    }
 
     useEffect(() => {
         //Declaring let data to calculate the tip amount per person
@@ -21,7 +24,7 @@ function Input({ updateTip, updateTotal, bill, handleBillValue,
         //Dividing the bill + tip by people numbers and gives total amount
         let totalCharge = (addedTip + parseFloat(bill)) / parseFloat(people);
 
-        if (selectedTip && bill && people != 0) {
+        if (selectedTip && bill != 0 && people != 0) {
             updateTip((addedTip / people).toFixed(2));
             updateTotal(totalCharge.toFixed(2));
         }
@@ -34,7 +37,6 @@ function Input({ updateTip, updateTotal, bill, handleBillValue,
         if (bill && people != 0 && !selectedTip) {
             updateTip((addedCustomTip / people).toFixed(2));
             updateTotal(totalCustomCharge.toFixed(2));
-
         }
 
         //Blocking too many digits 
@@ -102,11 +104,12 @@ function Input({ updateTip, updateTotal, bill, handleBillValue,
                             <label htmlFor="people">Number of People</label>
                             <p>{people == 0 ? `Can't be zero` : ''}</p>
                         </div>
-                        <input className="people-input" onChange={handlePeopleValue}
+                        <input style={people == 0 ? validateInput : { borderColor: 'black' }} className="people-input" onChange={handlePeopleValue}
                             type="number"
                             placeholder="0"
                             id="people"
-                            name="people" value={people} inputMode="numeric" />
+                            name="people" value={people} inputMode="numeric"
+                        />
 
                     </div>
                 </form>

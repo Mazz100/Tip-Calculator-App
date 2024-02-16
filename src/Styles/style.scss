@@ -35,8 +35,8 @@ body {
     background-color: white;
     padding: 1.5em;
     margin-top: 1.5em;
-    border-top-right-radius: 12px;
-    border-top-left-radius: 12px;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
 }
 
 .logo {
@@ -106,7 +106,6 @@ body {
         padding: 0.2em;
         margin-bottom: 1em;
         border-radius: 6px;
-        border: none;
         background-color: $input-bg-color;
         background-image: url(../assets/icon-person.svg);
         background-repeat: no-repeat;
@@ -118,9 +117,11 @@ body {
     @include Flex(row);
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 0.2em;
 
     p {
         font-size: 0.875rem;
+        color: hsl(13, 74%, 56%);
     }
 }
 
@@ -197,6 +198,7 @@ input[type="radio"]:focus-visible {
 
     display: flex;
     flex-direction: column;
+   
 
     .tip-amount {
         @include Flex(row);
@@ -223,6 +225,19 @@ input[type="radio"]:focus-visible {
         font-size: 2.5rem;
     }
 
+}
+
+//Button is grayed out before any valid results === Swtiching class using state managment in react
+.default-button {
+    width: 100%;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 6px;
+    margin-top: 1.5em;
+    padding: 0.4em;
+    background-color: hsl(183, 79%, 24%);
+    color: hsl(183, 100%, 15%);
 }
 
 .reset-button {

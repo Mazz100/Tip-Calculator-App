@@ -1,14 +1,11 @@
-
+import React, { useState } from "react";
 
 function Button({ reset, totalAmount }) {
-    const defaultButton = {
-        backgroundColor: 'hsl(178, 100%, 16%)',
-        color: 'black',
-    }
+    const [buttonUi, setButtonUi] = useState("default-button");
 
     return (
         <>
-            <button className="reset-button" onClick={reset}>Reset</button>
+            <button className={totalAmount > 0 ? "reset-button" : buttonUi} onClick={reset}>Reset</button>
         </>
     );
 }

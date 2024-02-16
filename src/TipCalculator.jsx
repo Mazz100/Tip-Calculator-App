@@ -34,6 +34,10 @@ function TipCalculator() {
 
     }
 
+    function resetOptionValue() {
+        setSelectedTip('');
+    }
+
     function handleCustomTip(event) {
         if (selectedTip) {
             resetOptionValue();
@@ -44,10 +48,6 @@ function TipCalculator() {
 
     function resetCustomTip() {
         setCustomTip('');
-    }
-
-    function resetOptionValue() {
-        setSelectedTip('');
     }
 
     const updateTip = (tipAmount) => {

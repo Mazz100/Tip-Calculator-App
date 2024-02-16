@@ -1,16 +1,20 @@
 import Button from "./Button.jsx";
-import propTypes from 'prop-types';
-import TipCalculator from "./TipCalculator.jsx";
+
 
 function Result({ tipAmount, totalAmount, updateTotal, updateTip,
     resetBillValue, resetOptionValue, resetPeopleValue, resetCustomTip }) {
     const resetValues = () => {
         updateTip('0.00');
         updateTotal('0.00');
-        resetBillValue();
-        resetOptionValue();
-        resetPeopleValue();
-        resetCustomTip();
+
+        //Not resetting unless a value is defined
+        if (totalAmount > 0) {
+            resetBillValue();
+            resetOptionValue();
+            resetPeopleValue();
+            resetCustomTip();
+        }
+
     }
 
     return (
@@ -23,7 +27,7 @@ function Result({ tipAmount, totalAmount, updateTotal, updateTip,
                     </div>
 
                     <div className="tip-value">
-                        <span className="span-value" id="tip-value">${tipAmount}</span>
+                        <span style={tipAmount.length >= 10 ? { fontSize: '1.5rem' } : { fontSize: '2.5rem' }} className="span-value">${tipAmount}</span>
                     </div>
                 </div>
 
@@ -34,7 +38,7 @@ function Result({ tipAmount, totalAmount, updateTotal, updateTip,
                     </div>
 
                     <div className="people-value">
-                        <span className="span-value" id="total-value">${totalAmount}</span>
+                        <span style={totalAmount.length >= 10 ? { fontSize: '1.5rem' } : { fontSize: '2.5rem' }} className="span-value">${totalAmount}</span>
                     </div>
                 </div>
 
