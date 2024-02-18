@@ -100,11 +100,11 @@ body {
   font-family: "Space Mono", monospace;
 }
 
-.main {
+.inner-wrapper {
   max-width: 25rem;
   background-color: white;
   padding: 1.5em;
-  margin-top: 1.5em;
+  margin-top: 1em;
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
 }
@@ -295,6 +295,7 @@ input[type=radio]:focus-visible {
 
 .default-button {
   width: 100%;
+  cursor: not-allowed;
   font-size: 1.2rem;
   text-transform: uppercase;
   border: none;
@@ -337,13 +338,15 @@ input[type=radio]:focus-visible {
   body {
     justify-content: center;
   }
-  .main {
+  .inner-wrapper {
     max-width: 54rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(1, 1fr);
     place-content: center;
     border-radius: 12px;
+    margin-top: 3em;
+    padding: 2em;
   }
   .bill-container,
   .people-container {

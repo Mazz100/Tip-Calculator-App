@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 
 function Input({ updateTip, updateTotal, bill, handleBillValue,
     resetBillValue, selectedTip, updateOptionValue, handlePeopleValue,
-    resetPeopleValue, people, handleCustomTip, resetCustomTip, customTip }) {
+    resetPeopleValue, people, handleCustomTip, resetCustomTip, customTip, error, setError }) {
 
     //Create an array of objects for radio inputs
     const tips =
@@ -48,7 +48,7 @@ function Input({ updateTip, updateTotal, bill, handleBillValue,
             resetBillValue();
         }
 
-        else if (people.length > 4 || people < 0) {
+        else if (people.length > 5 || people < 0) {
             resetPeopleValue();
         }
 
@@ -104,7 +104,9 @@ function Input({ updateTip, updateTotal, bill, handleBillValue,
                             <label htmlFor="people">Number of People</label>
                             <p>{people == 0 ? `Can't be zero` : ''}</p>
                         </div>
-                        <input style={people == 0 ? validateInput : { borderColor: 'black' }} className="people-input" onChange={handlePeopleValue}
+                        <input style={people == 0 ? validateInput : { borderColor: 'black' }}
+                            className="people-input"
+                            onChange={handlePeopleValue}
                             type="number"
                             placeholder="0"
                             id="people"

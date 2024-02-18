@@ -5,11 +5,13 @@ function App() {
 
   return (
     <>
-      <div className='logo'>
-        <img className='logo-image' src={logo} alt="" />
-      </div>
       <main className='main'>
-        <TipCalculator />
+        <div className='logo'>
+          <img className='logo-image' src={logo} alt="" />
+        </div>
+        <div className="inner-wrapper">
+          <TipCalculator />
+        </div>
       </main>
 
       <footer className="attribution">

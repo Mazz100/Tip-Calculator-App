@@ -29,12 +29,11 @@ body {
     font-family: 'Space Mono', monospace;
 }
 
-.main {
+.inner-wrapper{
     max-width: 25rem;
-
     background-color: white;
     padding: 1.5em;
-    margin-top: 1.5em;
+    margin-top: 1em;
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
 }
@@ -198,7 +197,7 @@ input[type="radio"]:focus-visible {
 
     display: flex;
     flex-direction: column;
-   
+
 
     .tip-amount {
         @include Flex(row);
@@ -230,6 +229,7 @@ input[type="radio"]:focus-visible {
 //Button is grayed out before any valid results === Swtiching class using state managment in react
 .default-button {
     width: 100%;
+    cursor: not-allowed;
     font-size: 1.2rem;
     text-transform: uppercase;
     border: none;
@@ -284,10 +284,12 @@ input[type="radio"]:focus-visible {
         justify-content: center;
     }
 
-    .main {
+    .inner-wrapper {
         max-width: 54rem;
         @include Grid(2, 1);
         border-radius: 12px;
+        margin-top: 3em;
+        padding: 2em;
     }
 
     .bill-container,

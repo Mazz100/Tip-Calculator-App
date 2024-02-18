@@ -1,21 +1,8 @@
 import Button from "./Button.jsx";
 
 
-function Result({ tipAmount, totalAmount, updateTotal, updateTip,
-    resetBillValue, resetOptionValue, resetPeopleValue, resetCustomTip }) {
-    const resetValues = () => {
-        updateTip('0.00');
-        updateTotal('0.00');
+function Result({ tipAmount, totalAmount, resetValues }) {
 
-        //Not resetting unless a value is defined
-        if (totalAmount > 0) {
-            resetBillValue();
-            resetOptionValue();
-            resetPeopleValue();
-            resetCustomTip();
-        }
-
-    }
 
     return (
         <>
@@ -43,7 +30,6 @@ function Result({ tipAmount, totalAmount, updateTotal, updateTip,
                 </div>
 
                 <Button reset={resetValues}
-                    resetBill={resetBillValue}
                     totalAmount={totalAmount} />
             </div >
         </>

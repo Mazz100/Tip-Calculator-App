@@ -13,6 +13,7 @@ function TipCalculator() {
     const [people, setPeople] = useState("");
     const [customTip, setCustomTip] = useState("");
 
+
     function handleBillValue(event) {
         setBill(event.target.value);
     }
@@ -58,6 +59,20 @@ function TipCalculator() {
         setTotalAmount(totalAmount);
     }
 
+    const resetValues = () => {
+        updateTip('0.00');
+        updateTotal('0.00');
+
+        //Not resetting unless a value is defined
+        if (totalAmount > 0) {
+            resetBillValue();
+            resetOptionValue();
+            resetPeopleValue();
+            resetCustomTip();
+        }
+
+    }
+
     return (
         <>
             <Input updateTip={updateTip}
@@ -73,16 +88,11 @@ function TipCalculator() {
                 resetPeopleValue={resetPeopleValue}
                 customTip={customTip}
                 handleCustomTip={handleCustomTip}
-                resetCustomTip={resetCustomTip} />
+                resetCustomTip={resetCustomTip}/>
 
 
             <Result tipAmount={tipAmount} totalAmount={totalAmount}
-                updateTip={updateTip}
-                updateTotal={updateTotal}
-                resetBillValue={resetBillValue}
-                resetOptionValue={resetOptionValue}
-                resetPeopleValue={resetPeopleValue}
-                resetCustomTip={resetCustomTip} />
+                resetValues={resetValues} />
         </>
 
     );
